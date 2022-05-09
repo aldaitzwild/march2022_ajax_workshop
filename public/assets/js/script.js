@@ -5,7 +5,13 @@ function updateHeadline(title, picture, content) {
 }
 
 document.getElementById('changeHeadlineButton').addEventListener('click', function () {
-    //TODO 1 : Get a random article
+    fetch("api/articles/random")
+    .then(response => response.json())
+    .then(article => {
+        console.log(article);
+        updateHeadline(article.title, article.picture, article.content);
+    })
+    ;
 });
 
 document.getElementById('searchHeadline').addEventListener('input', function(e) {
