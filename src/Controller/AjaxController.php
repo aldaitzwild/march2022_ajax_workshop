@@ -31,8 +31,10 @@ class AjaxController extends AbstractController
 
     public function searchArticles(string $search): string
     {
-        //TODO
-        return "$search";
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->selectArticlesByKeywords($search);
+
+        return json_encode($articles);
     }
 
     public function getArticleById(int $id): string
